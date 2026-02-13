@@ -1,158 +1,141 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
+  <meta charset="UTF-8">
+  <title>CloudNest Drive</title>
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #fdf0f5, #ffe6f0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 90%;
+    }
+
+    h1, h2 {
+      color: #d63384;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.2s ease;
+    }
+
+    .yes {
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #e6005c;
+    }
+
+    .also-yes {
+      background-color: #ffcce0;
+    }
+
+    #reveal {
+      display: none;
+    }
+
+    #gallery {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #gallery img {
+      width: 150px;
+      height: auto;
+      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    #gallery img.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
+
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;CloudNest Drive&lt;/title&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Confetti Library --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"&gt;&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: linear-gradient(to bottom right, #fdf0f5, #ffe6f0);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 100vh;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 40px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 30px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 600px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 90%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>h1, h2 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #d63384;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 12px 25px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 25px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>cursor: pointer;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>transition: 0.2s ease;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.yes {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background-color: #ff4d88;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.yes:hover {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background-color: #e6005c;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.also-yes {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background-color: #ffcce0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#reveal {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#gallery {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#gallery img {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 150px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>box-shadow: 0 5px 15px rgba(0,0,0,0.15);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>opacity: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>transform: translateY(20px);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>transition: all 0.6s ease;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#gallery img.show {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>opacity: 1;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>transform: translateY(0);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;div class="container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;CloudNest Drive&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p id="loadingText"&gt;Loading shared photos...&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="reveal"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;🌹&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>After careful evaluation and consideration,&lt;br&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>I have come to the conclusion that&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>you make my world brighter.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Will you be my Valentine? 💕&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button class="yes" onclick="sayYes()"&gt;YES&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button class="also-yes" onclick="sayYes()"&gt;ALSO YES&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="gallery"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Our favorite moments ❤️&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img src="images/img1.jpg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img src="images/img2.jpg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img src="images/img3.jpg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img src="images/img4.jpg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Fake loading delay</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>setTimeout(function() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById("loadingText").style.display = "none";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById("reveal").style.display = "block";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}, 2000);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>function sayYes() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// Launch confetti</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>confetti({</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>particleCount: 200,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>spread: 120,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>origin: { y: 0.6 }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById("reveal").style.display = "none";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById("gallery").style.display = "block";</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const images = document.querySelectorAll("#gallery img");</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>images.forEach((img, index) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>setTimeout(() =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>img.classList.add("show");</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}, index * 400);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+<div class="container">
+  <h2>CloudNest Drive</h2>
+  <p id="loadingText">Loading shared photos...</p>
+
+  <div id="reveal">
+    <h1>🌹</h1>
+    <p>
+      After careful evaluation and consideration,<br><br>
+      I have come to the conclusion that<br>
+      you make my world brighter.
+    </p>
+    <h2>Will you be my Valentine? 💕</h2>
+
+    <button class="yes" onclick="sayYes()">YES</button>
+    <button class="also-yes" onclick="sayYes()">ALSO YES</button>
+  </div>
+
+  <div id="gallery">
+    <h2>Our favorite moments ❤️</h2>
+    <img src="images/img1.jpeg">
+    <img src="images/img2.jpeg">
+    <img src="images/img3.jpeg">
+    <img src="images/img4.jpeg">
+  </div>
+</div>
+
+<script>
+  // Fake loading delay
+  setTimeout(function() {
+    document.getElementById("loadingText").style.display = "none";
+    document.getElementById("reveal").style.display = "block";
+  }, 2000);
+
+  function sayYes() {
+    // Launch confetti
+    confetti({
+      particleCount: 200,
+      spread: 120,
+      origin: { y: 0.6 }
+    });
+
+    document.getElementById("reveal").style.display = "none";
+    document.getElementById("gallery").style.display = "block";
+
+    const images = document.querySelectorAll("#gallery img");
+    images.forEach((img, index) => {
+      setTimeout(() => {
+        img.classList.add("show");
+      }, index * 400);
+    });
+  }
+</script>
+
 </body>
 </html>
